@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Pizzaria</title>
+</head>
+<body>
+    <div id="orderForm">
+        <h2>Faça seu Pedido</h2>
+        <label for="size">Tamanho da Pizza:</label>
+        <select id="size" onchange="updateTotal()">
+            <option value="broto">Broto</option>
+            <option value="grande">Grande</option>
+        </select>
+
+        <label for="pizzaNumbers">Números das Pizzas:</label>
+        <input type="text" id="pizzaNumbers" placeholder="Ex: 22, 41, 33" onblur="updateTotal()">
+
+        <label for="drink">Refrigerante:</label>
+        <select id="drink" onchange="updateTotal()">
+            <option selected=""></option>
+            <option value="guarana">Guaraná</option>
+            <option value="limao">Limão</option>
+            <option value="laranja">Laranja</option>
+            <option value="tubaina">Tubaina</option>
+            <option value="coca">Coca</option>
+        </select>
+
+        <h3>Total a pagar: R$<span id="total">0,00</span></h3>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
