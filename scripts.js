@@ -1,11 +1,13 @@
 function updateTotal() {
     const size = document.getElementById('size').value;
     const pizzaNumbersInput = document.getElementById('pizzaNumbers');
+    const drink = document.getElementById('drink').value;
+    const drinkQuantity = parseInt(document.getElementById('drinkQuantity').value) || 0;
 
     // Remover caracteres não numéricos, exceto vírgulas e espaços
     let sanitizedInput = pizzaNumbersInput.value.replace(/[^0-9,\s]/g, '');
 
-    // Adicionar vírgula automaticamente após dois caracteres
+    // Adicionar vírgula automaticamente após dois caracteres e espaço após a vírgula
     sanitizedInput = sanitizedInput.replace(/(\d{2})(?=\d)/g, '$1, ');
 
     pizzaNumbersInput.value = sanitizedInput;
@@ -15,8 +17,6 @@ function updateTotal() {
         .split(',')
         .map(num => parseInt(num.trim()))
         .filter(num => !isNaN(num));
-
-    const drink = document.getElementById('drink').value;
 
     let total = 0;
 
@@ -49,15 +49,17 @@ function updateTotal() {
         case 'limao':
         case 'laranja':
         case 'tubaina':
-            total += 7;
+            total += 7 * drinkQuantity;
             break;
         case 'coca':
-            total += 12;
+            total += 12 * drinkQuantity;
             break;
     }
 
     document.getElementById('total').innerText = total.toFixed(2);
 }
 
-// Adicionar um ouvinte de eventos para lidar com a entrada do usuário
+// Adicionar ouvintes de eventos para lidar com a entrada do usuário
 document.getElementById('pizzaNumbers').addEventListener('input', updateTotal);
+document.getElementById('drinkQuantity').addEventListener('input', updateTotal);
+document.getElementById('size').addEventListener('change', updateTotal);

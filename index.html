@@ -16,17 +16,19 @@
         </select>
 
         <label for="pizzaNumbers">Números das Pizzas:</label>
-        <input type="text" id="pizzaNumbers" placeholder="Ex: 22, 41, 33" onblur="updateTotal()">
+        <input type="text" id="pizzaNumbers" placeholder="Ex: 22, 41, 33" oninput="updateTotal()">
 
         <label for="drink">Refrigerante:</label>
         <select id="drink" onchange="updateTotal()">
-            <option selected=""></option>
             <option value="guarana">Guaraná</option>
             <option value="limao">Limão</option>
             <option value="laranja">Laranja</option>
             <option value="tubaina">Tubaina</option>
             <option value="coca">Coca</option>
         </select>
+
+        <label for="drinkQuantity">Quantidade de Refrigerantes:</label>
+        <input type="number" id="drinkQuantity" min="0" value="0" oninput="updateTotal()">
 
         <h3>Total a pagar: R$<span id="total">0,00</span></h3>
     </div>
